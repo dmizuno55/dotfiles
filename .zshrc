@@ -93,8 +93,9 @@ export VISUAL=emacsclient
 export PORT=5000
 
 # renv
-eval "$(rbenv init -)"
-
+if [ $+commands[rbenv] ]; then
+  eval "$(SHELL=zsh rbenv init - --no-rehash)"
+fi
 
 alias E='emacsclient -t'
 alias kill-emacs="emacsclient -e '(kill-emacs)'"
